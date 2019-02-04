@@ -59,6 +59,7 @@ with open(pyBank_csv, newline="") as csvfile:
     averageChange = sumChanges/indexLastProfit
     averageRounded = round(averageChange,2)
 
+    # Print analysis to terminal
     print("Financial Analysis")
     print("----------------------------")
     print(f"Total Months: {monthCount}")
@@ -67,3 +68,13 @@ with open(pyBank_csv, newline="") as csvfile:
     print(f"Greatest Increase in Profits: {maxIncDate} (${maxIncreaseAmount})")
     print(f"Greatest Decrease in Profits: {maxDecDate} (${maxDecreaseAmount})")
 
+    # Export a text file with the results
+    newFile = open("PyBankResults.txt", "w")
+    newFile.write("Financial Analysis\n")
+    newFile.write("----------------------------\n")
+    newFile.write(f"Total Months: {monthCount}\n")
+    newFile.write(f"Total: ${netTotal}\n")
+    newFile.write(f"Average Change: ${averageRounded}\n")
+    newFile.write(f"Greatest Increase in Profits: {maxIncDate} (${maxIncreaseAmount})\n")
+    newFile.write(f"Greatest Decrease in Profits: {maxDecDate} (${maxDecreaseAmount})\n")
+    newFile.close()
